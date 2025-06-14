@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juguetópolis</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/assets/img/juguetopolis-logo.png.png">
+    <link rel="stylesheet" href="dist/output.css">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</head>
+
+<body class="bg-gradient-to-r from-gray-900 via-purple-900 to-gray-900 text-gray-100">
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-gray-900 via-purple-900 to-gray-900 shadow-lg" x-data="{ navOpen: false, showSearch: false }">
+        <div class="container mx-auto flex items-center justify-between p-4">
+            <!-- Logo y navegación izquierda -->
+            <div class="flex items-center space-x-6">
+                <img src="/assets/img/juguetopolis-logo.png.png" alt="Juguetópolis Logo" class="h-16 w-auto">
+                <!-- Navegación central (escritorio) -->
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-100 hover:text-yellow-400 transition">Inicio</a>
+                    <a href="catalogo.html" class="text-gray-100 hover:text-yellow-400 transition">Catálogo</a>
+                    <a href="#contacto" class="text-gray-100 hover:text-yellow-400 transition">Contacto</a>
+                </nav>
+            </div>
+            <!-- Buscador escritorio centrado -->
+            <div class="hidden md:flex flex-grow justify-center">
+                <input type="text" placeholder="Buscar..."
+                    class="w-[400px] px-4 py-1 rounded-xl bg-gray-800 text-sm text-gray-100 placeholder-yellow-400 focus:outline-none focus:ring focus:ring-yellow-500" />
+            </div>
+            <!-- Íconos de usuario/carrito solo escritorio -->
+            <div class="flex items-center space-x-4">
+                <!-- Lupa solo móvil -->
+                <button @click="showSearch = !showSearch" class="md:hidden text-yellow-400">
+                    <i class="fas fa-search text-xl"></i>
+                </button>
+                
+                <!-- Hamburguesa móvil -->
+                <button @click="navOpen = !navOpen" class="md:hidden text-yellow-400">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Buscador móvil -->
+        <div x-show="showSearch" x-transition class="md:hidden px-4 pb-2">
+            <input type="text" placeholder="Buscar..."
+                class="w-full px-4 py-2 rounded-xl bg-gray-800 text-gray-100 placeholder-yellow-400 focus:outline-none focus:ring focus:ring-yellow-500">
+        </div>
+        <!-- Menú móvil -->
+        <nav x-show="navOpen" x-transition class="md:hidden bg-gradient-to-r from-gray-900 via-purple-900 to-gray-900 px-4 pb-4 space-y-2 text-gray-100">
+            <a href="index.html" @click="navOpen = false" class="flex items-center space-x-2 hover:text-yellow-400">
+                <span>Inicio</span>
+            </a>
+            <a href="catalogo.html" @click="navOpen = false" class="flex items-center space-x-2 hover:text-yellow-400">
+                <span>Catálogo</span>
+            </a>
+            <a href="#contacto" @click="navOpen = false" class="flex items-center space-x-2 hover:text-yellow-400">
+                <span>Contacto</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="flex items-center justify-center h-screen relative overflow-hidden shadow-lg">
+        <!-- Background Animation -->
+        <div class="absolute inset-0 z-0">
+            <canvas id="paintExplosionCanvas" class="w-full h-full"></canvas>
+        </div>
+        <!-- Content -->
+        <div class="relative z-10 text-center p-10 rounded-lg">
+            <!-- Logo with animation -->
+            <div class="flex justify-center mb-6">
+                <img src="/assets/img/juguetopolis-logo.png.png" alt="Juguetópolis Logo" class="h-48 w-auto animate-glow">
+            </div>
+            <h1 class="text-5xl font-extrabold text-yellow-400">¡Bienvenido a Juguetópolis!</h1>
+            <p class="text-2xl font-bold mt-4 text-white animate-glow">LA CIUDAD DONDE VIVEN TUS JUGUETES</p>
+            <a href="catalogo.html">
+                <button class="mt-6 px-6 py-3 bg-yellow-400 text-gray-900 font-bold rounded-lg hover:bg-yellow-500 transition">
+                    ¡Compra Ahora!
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <style>
+        @keyframes glow {
+            0% {
+                filter: brightness(1);
+            }
+            50% {
+                filter: brightness(1.5);
+            }
+            100% {
+                filter: brightness(1);
+            }
+        }
+
+        .animate-glow {
+            animation: glow 2s infinite;
+        }
+    </style>
+
+    <script>
+        // Paint Explosion Animation
+        const canvas = document.getElementById('paintExplosionCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function createParticle() {
+            const colors = ['rgba(255, 87, 51, 0.3)', 'rgba(255, 195, 0, 0.3)', 'rgba(218, 247, 166, 0.3)', 'rgba(199, 0, 57, 0.3)', 'rgba(144, 12, 63, 0.3)', 'rgba(88, 24, 69, 0.3)'];
+            return {
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 20 + 10,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                velocityX: (Math.random() - 0.5) * 2,
+                velocityY: (Math.random() - 0.5) * 2,
+            };
+        }
+
+        function updateParticles() {
+            particles.forEach((particle) => {
+                particle.x += particle.velocityX;
+                particle.y += particle.velocityY;
+
+                if (particle.x < 0 || particle.x > canvas.width || particle.y < 0 || particle.y > canvas.height) {
+                    Object.assign(particle, createParticle());
+                }
+            });
+        }
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((particle) => {
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                ctx.fillStyle = particle.color;
+                ctx.fill();
+            });
+        }
+
+        function animate() {
+            updateParticles();
+            drawParticles();
+            requestAnimationFrame(animate);
+        }
+
+        function init() {
+            resizeCanvas();
+            particles = Array.from({ length: 100 }, createParticle);
+            animate();
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        init();
+    </script>
+
+    <!-- Preguntas Frecuentes Section -->
+    <section class="container mx-auto py-20 px-4">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-center text-yellow-400 mb-12">Preguntas Frecuentes</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-gradient-to-b from-purple-900 to-blue-900 shadow-xl rounded-xl p-6 md:p-8 transform transition-transform hover:scale-105 hover:shadow-2xl">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-credit-card text-yellow-400 text-5xl md:text-7xl mb-4 md:mb-6"></i>
+                    <h3 class="text-2xl md:text-3xl font-bold text-yellow-400 text-center mb-4 md:mb-6">Medios de Pago</h3>
+                    <p class="text-gray-300 text-center text-sm md:text-lg">Aceptamos tarjetas de crédito, débito, transferencias bancarias y pagos a través de plataformas como MercadoPago.</p>
+                </div>
+            </div>
+            <div class="bg-gradient-to-b from-purple-900 to-blue-900 shadow-xl rounded-xl p-6 md:p-8 transform transition-transform hover:scale-105 hover:shadow-2xl">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-truck text-yellow-400 text-5xl md:text-7xl mb-4 md:mb-6"></i>
+                    <h3 class="text-2xl md:text-3xl font-bold text-yellow-400 text-center mb-4 md:mb-6">Envíos</h3>
+                    <p class="text-gray-300 text-center text-sm md:text-lg">Realizamos envíos a todo el país. Los costos y tiempos de entrega dependen de la ubicación.</p>
+                </div>
+            </div>
+            <div class="bg-gradient-to-b from-purple-900 to-blue-900 shadow-xl rounded-xl p-6 md:p-8 transform transition-transform hover:scale-105 hover:shadow-2xl">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-cubes text-yellow-400 text-5xl md:text-7xl mb-4 md:mb-6"></i>
+                    <h3 class="text-2xl md:text-3xl font-bold text-yellow-400 text-center mb-4 md:mb-6">Productos</h3>
+                    <p class="text-gray-300 text-center text-sm md:text-lg">Ofrecemos juguetes y coleccionables de alta calidad, incluyendo figuras de acción, vehículos a escala y artículos temáticos.</p>
+                </div>
+            </div>
+            <div class="bg-gradient-to-b from-purple-900 to-blue-900 shadow-xl rounded-xl p-6 md:p-8 transform transition-transform hover:scale-105 hover:shadow-2xl">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-shopping-cart text-yellow-400 text-5xl md:text-7xl mb-4 md:mb-6"></i>
+                    <h3 class="text-2xl md:text-3xl font-bold text-yellow-400 text-center mb-4 md:mb-6">Pedidos</h3>
+                    <p class="text-gray-300 text-center text-sm md:text-lg">Puedes realizar tu pedido directamente en nuestro sitio web, seleccionando los productos y siguiendo el proceso de compra.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Animated Section -->
+        <div class="mt-12 text-center">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-check-circle text-green-400 text-5xl md:text-7xl mb-4 md:mb-6 animate-bounce"></i>
+                    <p class="text-xl md:text-2xl font-bold text-gray-100">La mejor calidad</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-check-circle text-green-400 text-5xl md:text-7xl mb-4 md:mb-6 animate-bounce"></i>
+                    <p class="text-xl md:text-2xl font-bold text-gray-100">La mejor variedad</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-check-circle text-green-400 text-5xl md:text-7xl mb-4 md:mb-6 animate-bounce"></i>
+                    <p class="text-xl md:text-2xl font-bold text-gray-100">Los mejores productos</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-check-circle text-green-400 text-5xl md:text-7xl mb-4 md:mb-6 animate-bounce"></i>
+                    <p class="text-xl md:text-2xl font-bold text-gray-100">La mejor atención</p>
+                </div>
+            </div>
+            <h3 class="text-3xl md:text-5xl font-extrabold text-yellow-400 mt-12 md:mt-16 animate-fade-in animate-pulse animate-bounce">¡No vas a encontrar nada igual en el país!</h3>
+        </div>
+    </section>
+
+    <script>
+        // Intersection Observer for animations
+        const animatedElements = document.querySelectorAll('.animate-bounce, .animate-fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-visible');
+                } else {
+                    entry.target.classList.remove('animate-visible');
+                }
+            });
+        });
+
+        animatedElements.forEach(el => observer.observe(el));
+    </script>
+    <!-- Botón de WhatsApp -->
+    <a href="https://wa.me/5493511234567?text=¡Hola!%20Quisiera%20hacer%20una%20consulta%20sobre%20sus%20productos."
+        target="_blank"
+        class="fixed bottom-6 right-6 bg-green-500 text-white p-5 rounded-full shadow-lg hover:bg-green-600 transition transform hover:scale-110 flex items-center justify-center"
+        style="width: 70px; height: 70px;">
+        <i class="fab fa-whatsapp text-5xl"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer id="contacto" class="bg-gradient-to-r from-gray-800 via-purple-800 to-gray-800 text-center py-10 border-t-1 border-yellow-400">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <h3 class="text-xl font-bold text-yellow-400">Contacto</h3>
+                    <p class="text-gray-300 mt-2">Email: contacto@jugueteriafuturista.com</p>
+                    <p class="text-gray-300">Teléfono: +54 351 123 4567</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-yellow-400">Redes Sociales</h3>
+                    <div class="flex justify-center space-x-4 mt-2">
+                        <a href="#" class="text-gray-300 hover:text-yellow-400 transition">
+                            <i class="fab fa-facebook text-4xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-yellow-400 transition">
+                            <i class="fab fa-instagram text-4xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-yellow-400 transition">
+                            <i class="fab fa-x-twitter text-4xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-yellow-400">Ubicación</h3>
+                    <p class="text-gray-300 mt-2">Actualmente no contamos con sucursal física.</p>
+                </div>
+            </div>
+            <p class="text-gray-300 mt-6">© 2025 Juguetopolis. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle menu for mobile
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+    <script src="js/articulos.js"></script>
+</body>
+</html>
