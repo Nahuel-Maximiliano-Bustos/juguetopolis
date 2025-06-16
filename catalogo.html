@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/assets/img/juguetopolis-logo.png.png">
+    <link rel="stylesheet" href="dist/output.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</head>
+
+<body class="bg-gradient-to-r from-gray-900 via-purple-900 to-gray-900 text-gray-100">
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-gray-900 via-purple-900 to-gray-900 shadow-lg"
+        x-data="{ navOpen: false, showSearch: false }">
+        <div class="container mx-auto flex items-center justify-between p-4">
+            <!-- Logo y navegación izquierda -->
+            <div class="flex items-center space-x-6">
+                <img src="/assets/img/juguetopolis-logo.png.png" alt="Juguetópolis Logo" class="h-16 w-auto">
+                <!-- Navegación central (escritorio) -->
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-100 hover:text-yellow-400 transition">Inicio</a>
+                    <a href="catalogo.html" class="text-gray-100 hover:text-yellow-400 transition">Catálogo</a>
+                    <a href="#contacto" class="text-gray-100 hover:text-yellow-400 transition">Contacto</a>
+                </nav>
+            </div>
+            <!-- Buscador escritorio centrado -->
+            <div class="hidden md:flex flex-grow justify-center">
+                <input type="text" placeholder="Buscar..."
+                    class="w-[400px] px-4 py-1 rounded-xl bg-gray-800 text-sm text-gray-100 placeholder-yellow-400 focus:outline-none focus:ring focus:ring-yellow-500" />
+            </div>
+            <!-- Íconos de usuario/carrito solo escritorio -->
+            <div class="flex items-center space-x-4">
+                <!-- Lupa solo móvil -->
+                <button @click="showSearch = !showSearch" class="md:hidden text-yellow-400">
+                    <i class="fas fa-search text-xl"></i>
+                </button>
+
+                <!-- Usuario y Carrito solo en escritorio -->
+                <a href="#" id="btn-carrito"
+                    class="hidden md:flex text-gray-100 hover:text-yellow-400 items-center space-x-1">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Carrito</span>
+                </a>
+
+                <!-- Hamburguesa móvil -->
+                <button @click="navOpen = !navOpen" class="md:hidden text-yellow-400">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Buscador móvil -->
+        <div x-show="showSearch" x-transition class="md:hidden px-4 pb-2">
+            <input type="text" placeholder="Buscar..."
+                class="w-full px-4 py-2 rounded-xl bg-gray-800 text-gray-100 placeholder-yellow-400 focus:outline-none focus:ring focus:ring-yellow-500">
+        </div>
+        <!-- Menú móvil -->
+        <nav x-show="navOpen" x-transition
+            class="md:hidden bg-gradient-to-r from-gray-900 via-purple-900 to-gray-900 px-4 pb-4 space-y-2 text-gray-100">
+            <a href="index.html" @click="navOpen = false" class="flex items-center space-x-2 hover:text-yellow-400">
+                <span>Inicio</span>
+            </a>
+            <a href="catalogo.html" @click="navOpen = false" class="flex items-center space-x-2 hover:text-yellow-400">
+                <span>Catálogo</span>
+            </a>
+            <a href="#contacto" @click="navOpen = false" class="flex items-center space-x-2 hover:text-yellow-400">
+                <span>Contacto</span>
+            </a>
+            <a href="#" id="btn-carrito" class="flex text-gray-100 hover:text-yellow-400 items-center space-x-1">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Carrito</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Catálogo Mejorado -->
+    <div class="container mx-auto py-24 px-4 mt-20">
+        <!-- Categorías para filtrar -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button
+                class="px-6 py-2 bg-yellow-400 text-gray-900 font-semibold rounded-full shadow hover:bg-yellow-500 transition"
+                onclick="filtrarCategoria('todos')">
+                Todos
+            </button>
+            <button
+                class="px-6 py-2 bg-yellow-400 text-gray-900 font-semibold rounded-full shadow hover:bg-yellow-500 transition"
+                onclick="filtrarCategoria('dakar')">
+                Dakar
+            </button>
+            <button
+                class="px-6 py-2 bg-yellow-400 text-gray-900 font-semibold rounded-full shadow hover:bg-yellow-500 transition"
+                onclick="filtrarCategoria('batimovil')">
+                Batimovil
+            </button>
+            <button
+                class="px-6 py-2 bg-yellow-400 text-gray-900 font-semibold rounded-full shadow hover:bg-yellow-500 transition"
+                onclick="filtrarCategoria('senor-de-los-anillos')">
+                Señor de los Anillos
+            </button>
+            <button
+                class="px-6 py-2 bg-yellow-400 text-gray-900 font-semibold rounded-full shadow hover:bg-yellow-500 transition"
+                onclick="filtrarCategoria('rapido-y-furioso')">
+                Rápido y Furioso
+            </button>
+            <button
+                class="px-6 py-2 bg-yellow-400 text-gray-900 font-semibold rounded-full shadow hover:bg-yellow-500 transition"
+                onclick="filtrarCategoria('transformers')">
+                Transformers
+            </button>
+            <button
+                class="px-6 py-2 bg-yellow-400 text-gray-900 font-semibold rounded-full shadow hover:bg-yellow-500 transition"
+                onclick="filtrarCategoria('ford-f100')">
+                Ford F100
+            </button>
+            <button
+                class="px-6 py-2 bg-yellow-400 text-gray-900 font-semibold rounded-full shadow hover:bg-yellow-500 transition"
+                onclick="filtrarCategoria('fangio')">
+                Fangio
+            </button>
+            <button
+                class="px-6 py-2 bg-yellow-400 text-gray-900 font-semibold rounded-full shadow hover:bg-yellow-500 transition"
+                onclick="filtrarCategoria('autos-americanos')">
+                Autos Americanos
+            </button>
+            <button
+                class="px-6 py-2 bg-yellow-400 text-gray-900 font-semibold rounded-full shadow hover:bg-yellow-500 transition"
+                onclick="filtrarCategoria('james-bond')">
+                James Bond
+            </button>
+        </div>
+        <!-- Tarjetas de productos -->
+        <div id="productos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+            <!-- Las tarjetas de productos se agregarán dinámicamente desde el archivo JS -->
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer id="contacto"
+        class="bg-gradient-to-r from-gray-800 via-purple-800 to-gray-800 text-center py-10 border-t-1 border-yellow-400">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <h3 class="text-xl font-bold text-yellow-400">Contacto</h3>
+                    <p class="text-gray-300 mt-2">Email: juguetopolis3@gmail.com</p>
+                    <p class="text-gray-300">Teléfono: Próximamente será actualizado</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-yellow-400">Redes Sociales</h3>
+                    <div class="flex justify-center space-x-4 mt-2">
+                        <a href="https://www.facebook.com/profile.php?id=61577645874453" class="text-gray-300 hover:text-yellow-400 transition">
+                            <i class="fab fa-facebook text-4xl"></i>
+                        </a>
+                        <a href="https://www.instagram.com/juguetopolis3/"
+                            class="text-gray-300 hover:text-yellow-400 transition">
+                            <i class="fab fa-instagram text-4xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-yellow-400">Ubicación</h3>
+                    <p class="text-gray-300 mt-2">
+                        <i class="fas fa-map-marker-alt text-yellow-400 mr-2"></i>
+                        Córdoba, Argentina
+                    </p>
+                </div>
+            </div>
+            <p class="text-gray-300 mt-6">© 2025 Juguetopolis. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script src="/js/articulos_optimizado.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Asegura que todos los botones con id="btn-carrito" (móvil y desktop) funcionen
+            const botonesCarrito = document.querySelectorAll("#btn-carrito");
+            botonesCarrito.forEach(btn => {
+                btn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    mostrarModalCarrito(); // función ya definida en tu JS
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
