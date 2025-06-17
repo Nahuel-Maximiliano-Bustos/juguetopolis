@@ -100,6 +100,7 @@ const productos = [
     {id: 90, titulo: "Piezas de Clásicos Americanos - producto descontinuado", precio: "$16000", categoria: "Autos americanos", imagen: "/assets/img/clasicos americanos/IMG-20250616-WA0222.jpg", stock: 20},
     {id: 91, titulo: "Piezas de Clásicos Americanos - producto descontinuado", precio: "$16000", categoria: "Autos americanos", imagen: "/assets/img/clasicos americanos/IMG-20250616-WA0223.jpg", stock: 20},
 ];
+
 // Contenedor de productos
 const productosContainer = document.getElementById("productos");
 
@@ -673,7 +674,7 @@ document.getElementById("finalizar-compra").addEventListener("click", () => {
             `*Total:* $${total}`;
 
         // Número de WhatsApp de la empresa (formato internacional sin + ni espacios)
-        const numeroEmpresa = "3518615872";
+        const numeroEmpresa = "5493518615872";
         const url = `https://wa.me/${numeroEmpresa}?text=${encodeURIComponent(mensaje)}`;
         window.open(url, "_blank");
 
@@ -709,3 +710,96 @@ document.getElementById("finalizar-compra").addEventListener("click", () => {
     });
 });
 
+// Evento para el botón "COMPRAR"
+document.addEventListener("click", function(e) {
+    if (e.target && e.target.textContent.trim() === "COMPRAR") {
+        const tarjeta = e.target.closest("div.bg-gray-800");
+        if (!tarjeta) return;
+
+        const titulo = tarjeta.querySelector("span.text-lg")?.textContent.trim();
+        const producto = productos.find(p => p.titulo === titulo);
+        if (!producto) return;
+
+        // Crear modal de confirmación
+        let modalConfirmacion = document.createElement("div");
+        modalConfirmacion.id = "modal-confirmacion-compra-unica";
+        modalConfirmacion.style.position = "fixed";
+        modalConfirmacion.style.top = "50%";
+        modalConfirmacion.style.left = "50%";
+        modalConfirmacion.style.transform = "translate(-50%, -50%)";
+        modalConfirmacion.style.background = "#222";
+        modalConfirmacion.style.color = "#fff";
+        modalConfirmacion.style.padding = "20px 30px";
+        modalConfirmacion.style.borderRadius = "10px";
+        modalConfirmacion.style.boxShadow = "0 4px 24px rgba(0,0,0,0.18)";
+        modalConfirmacion.style.zIndex = "13000";
+        modalConfirmacion.style.display = "flex";
+        modalConfirmacion.style.flexDirection = "column";
+        modalConfirmacion.style.alignItems = "center";
+        modalConfirmacion.style.gap = "16px";
+        modalConfirmacion.style.maxWidth = "400px";
+        modalConfirmacion.style.width = "100%";
+        modalConfirmacion.style.fontSize = "1rem";
+
+        modalConfirmacion.innerHTML = `
+            <p class="text-lg text-center">¿Deseás comprar <strong>${producto.titulo}</strong> ahora mismo?</p>
+            <div class="flex gap-4 mt-4">
+                <button id="btn-compra-solo" class="px-4 py-2 bg-yellow-400 text-gray-900 rounded hover:bg-yellow-500 font-semibold">Sí, solo este</button>
+                <button id="btn-compra-agregar" class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">No, agregar al carrito</button>
+            </div>
+        `;
+        document.body.appendChild(modalConfirmacion);
+
+        // Evento: "Sí, solo este"
+        document.getElementById("btn-compra-solo").onclick = () => {
+            carrito = []; // Vaciar el carrito por si había algo
+            agregarAlCarrito(producto.id, 1); // Agrega solo este producto
+            document.getElementById("modal-confirmacion-compra-unica")?.remove();
+            document.getElementById("finalizar-compra")?.click(); // Dispara el proceso de finalizar
+        };
+
+        // Evento: "No, agregar al carrito"
+        document.getElementById("btn-compra-agregar").onclick = () => {
+            agregarAlCarrito(producto.id, 1);
+            document.getElementById("modal-confirmacion-compra-unica")?.remove();
+
+            // Modal informativo (mismo estilo que el de "Agregar al carrito")
+            let modal = document.getElementById("modal-agregado-carrito");
+            if (!modal) {
+                modal = document.createElement("div");
+                modal.id = "modal-agregado-carrito";
+                modal.style.position = "fixed";
+                modal.style.bottom = "32px";
+                modal.style.right = "32px";
+                modal.style.background = "#222";
+                modal.style.color = "#fff";
+                modal.style.padding = "20px 32px";
+                modal.style.borderRadius = "1rem";
+                modal.style.boxShadow = "0 4px 24px rgba(0,0,0,0.18)";
+                modal.style.fontSize = "1.1rem";
+                modal.style.display = "flex";
+                modal.style.alignItems = "center";
+                modal.style.gap = "16px";
+                modal.style.zIndex = "11000";
+                modal.style.opacity = "0";
+                modal.style.transition = "opacity 0.3s";
+                document.body.appendChild(modal);
+            }
+
+            modal.innerHTML = `
+                <span style="font-size:1.5rem; color:#facc15;">&#10003;</span>
+                <span>
+                    <b>${producto.titulo}</b> fue agregado al carrito
+                </span>
+            `;
+            modal.style.opacity = "1";
+            modal.style.pointerEvents = "auto";
+
+            clearTimeout(modal._timeout);
+            modal._timeout = setTimeout(() => {
+                modal.style.opacity = "0";
+                modal.style.pointerEvents = "none";
+            }, 1700);
+        };
+    }
+});
