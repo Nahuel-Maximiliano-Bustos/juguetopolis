@@ -674,7 +674,7 @@ document.getElementById("finalizar-compra").addEventListener("click", () => {
             `*Total:* $${total}`;
 
         // Número de WhatsApp de la empresa (formato internacional sin + ni espacios)
-        const numeroEmpresa = "3513400356";
+        const numeroEmpresa = "3518615872";
         const url = `https://wa.me/${numeroEmpresa}?text=${encodeURIComponent(mensaje)}`;
         window.open(url, "_blank");
 
