@@ -176,7 +176,7 @@ const productos = [
     {id: 165, titulo: "IAME Rastrojero (1952)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0341.jpg", stock: 1},
     {id: 167, titulo: "Ford F100 Pick-Up (1972)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0342.jpg", stock: 1},
     {id: 168, titulo: "Renault 18 GTX II (1987)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0343.jpg", stock: 1},
-    {id: 169, titulo: "Fiat 128 Europa IAVA TV1300 (1978)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0344.jpg", stock: 1},
+    {id: 169, titulo: "Fiat 128 Europa IAVA TV1300 (1978)", precio: "$40000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0344.jpg", stock: 1},
     {id: 170, titulo: "Renault Fuego GTX 2.0 (1984)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0345.jpg", stock: 1},
     {id: 171, titulo: "Chevrolet C-10 (1961)", precio: "$40000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0346.jpg", stock: 1},
     {id: 172, titulo: "Chrysler Valian V200 (1961)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0347.jpg", stock: 1},
