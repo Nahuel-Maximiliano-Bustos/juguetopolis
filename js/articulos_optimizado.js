@@ -138,7 +138,7 @@ const productos = [
     {id: 127, titulo: "Suzuki Vitara JLX (1995)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0303.jpg", stock: 1},
     {id: 128, titulo: "Ford Falcon Rural Deluxe (1970)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0304.jpg", stock: 1},
     {id: 129, titulo: "Fiat 1500 (1963)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0305.jpg", stock: 1},
-    {id: 130, titulo: "Ford Taunus GXL (1974)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0306.jpg", stock: 1},
+    //{id: 130, titulo: "Ford Taunus GXL (1974)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0306.jpg", stock: 1},
     {id: 131, titulo: "Chevrolet 400 4 Puertas (1962)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0307.jpg", stock: 1},
     {id: 132, titulo: "Volkswagen T2 b (1982)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0308.jpg", stock: 1},
     {id: 133, titulo: "Fiat 600 S (1977)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0309.jpg", stock: 1},
@@ -154,7 +154,7 @@ const productos = [
     {id: 143, titulo: "Fiat 128 Europa (1978)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0319.jpg", stock: 1},
     {id: 144, titulo: "Fiat 125 (1972)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0320.jpg", stock: 1},
     {id: 145, titulo: "Volkswagen 1300L (1980)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0321.jpg", stock: 1},
-    {id: 146, titulo: "Renault 12 Break (1973)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0322.jpg", stock: 1},
+    //{id: 146, titulo: "Renault 12 Break (1973)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0322.jpg", stock: 1},
     {id: 147, titulo: "Volkswagen Gacel GL (1983)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0323.jpg", stock: 1},
     {id: 148, titulo: "Renault 12 TS (1976)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0324.jpg", stock: 1},
     {id: 149, titulo: "Peugeot 504 (1969)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0325.jpg", stock: 1},
@@ -174,10 +174,10 @@ const productos = [
     {id: 163, titulo: "Ford Sierra XR4 (1984)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0339.jpg", stock: 1},
     {id: 164, titulo: "Peugeot 504 TN (1977)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0340.jpg", stock: 1},
     {id: 165, titulo: "IAME Rastrojero (1952)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0341.jpg", stock: 1},
-    {id: 167, titulo: "Ford F100 Pick-Up (1972)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0342.jpg", stock: 1},
+    //{id: 167, titulo: "Ford F100 Pick-Up (1972)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0342.jpg", stock: 1},
     {id: 168, titulo: "Renault 18 GTX II (1987)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0343.jpg", stock: 1},
-    {id: 169, titulo: "Fiat 128 Europa IAVA TV1300 (1978)", precio: "$40000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0344.jpg", stock: 1},
-    {id: 170, titulo: "Renault Fuego GTX 2.0 (1984)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0345.jpg", stock: 1},
+    {id: 169, titulo: "Fiat 128 Europa IAVA TV1300 (1978)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0344.jpg", stock: 1},
+    //{id: 170, titulo: "Renault Fuego GTX 2.0 (1984)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0345.jpg", stock: 1},
     {id: 171, titulo: "Chevrolet C-10 (1961)", precio: "$40000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0346.jpg", stock: 1},
     {id: 172, titulo: "Chrysler Valian V200 (1961)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0347.jpg", stock: 1},
     {id: 173, titulo: "Chrysler Valiant IV (1967)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0348.jpg", stock: 1},
@@ -185,7 +185,7 @@ const productos = [
     {id: 175, titulo: "Fiat IAVA 128TV (1971)", precio: "$40000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0350.jpg", stock: 1},
     {id: 176, titulo: "IKA Renault Torino S (1970)", precio: "$40000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0351.jpg", stock: 1},
     {id: 178, titulo: "IKA Torino 380 W 2 Puertas (1967)", precio: "$40000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0352.jpg", stock: 1},
-    {id: 179, titulo: "Dodge GTX V8 (1973)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0353.jpg", stock: 1},
+    //{id: 179, titulo: "Dodge GTX V8 (1973)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0353.jpg", stock: 1},
     {id: 180, titulo: "Dodge Coronado (1973)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0354.jpg", stock: 1},
     {id: 181, titulo: "Rambler Classic Deluxe (1963)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0355.jpg", stock: 1},
     {id: 182, titulo: "Ford Falcon 4 Puertas (1962)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0356.jpg", stock: 1},
@@ -220,6 +220,25 @@ const productos = [
     {id: 211, titulo: "Volvo 224 GL (1979)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0385.jpg", stock: 1},
     {id: 212, titulo: "BMW 320 (1979)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0386.jpg", stock: 1},
     {id: 213, titulo: "Mercedes Benz 280 SE (1979)", precio: "$25000", categoria: "Autos Argentinos", imagen: "/assets/img/Autos argentinos/IMG-20250626-WA0387.jpg", stock: 1},
+    //DC comics
+    {id: 214, titulo: "El Átomo - The Atom", precio: "$20000", categoria: "DC comics", imagen: "/assets/img/DCcomics/IMG-20250706-WA0015.jpg", stock: 1},
+    {id: 215, titulo: "Hombre Alcohon - Hawkman", precio: "$20000", categoria: "DC comics", imagen: "/assets/img/DCcomics/IMG-20250706-WA0016.jpg", stock: 1},
+    {id: 216, titulo: "Adam Negro - Black Adam", precio: "$20000", categoria: "DC comics", imagen: "/assets/img/DCcomics/IMG-20250706-WA0017.jpg", stock: 1},
+    //{id: 217, titulo: "", precio: "$20000", categoria: "DC comics", imagen: "/assets/img/DCcomics/IMG-20250706-WA0018.jpg", stock: 1},
+    {id: 218, titulo: "Siniestro - Sinestro", precio: "$20000", categoria: "DC comics", imagen: "/assets/img/DCcomics/IMG-20250706-WA0019.jpg", stock: 1},
+    {id: 219, titulo: "Raven", precio: "$20000", categoria: "DC comics", imagen: "/assets/img/DCcomics/IMG-20250706-WA0020.jpg", stock: 1},
+    {id: 220, titulo: "Booster Gold", precio: "$20000", categoria: "DC comics", imagen: "/assets/img/DCcomics/IMG-20250706-WA0021.jpg", stock: 1},
+    {id: 221, titulo: "Aquaman", precio: "$20000", categoria: "DC comics", imagen: "/assets/img/DCcomics/IMG-20250706-WA0022.jpg", stock: 1},
+    {id: 222, titulo: "Nova Starfire", precio: "$20000", categoria: "DC comics", imagen: "/assets/img/DCcomics/IMG-20250706-WA0023.jpg", stock: 1},
+    {id: 223, titulo: "Chica Alcohon - Hawkgirl", precio: "$20000", categoria: "DC comics", imagen: "/assets/img/DCcomics/IMG-20250706-WA0024.jpg", stock: 1},
+    //{id: 224, titulo: "", precio: "$20000", categoria: "DC comics", imagen: "/assets/img/DCcomics/IMG-20250706-WA0025.jpg", stock: 1},
+    {id: 224, titulo: "El acertijo - The Riddler", precio: "$20000", categoria: "DC comics", imagen: "/assets/img/DCcomics/IMG-20250706-WA0026.jpg", stock: 1},
+    {id: 226, titulo: "El Hombre Nuclear - Firestorm The Nuclear Man", precio: "$20000", categoria: "DC comics", imagen: "/assets/img/DCcomics/IMG-20250706-WA0027.jpg", stock: 1},
+    {id: 227, titulo: "Superboy-prime", precio: "$20000", categoria: "DC comics", imagen: "/assets/img/DCcomics/IMG-20250706-WA0028.jpg", stock: 1},
+    {id: 228, titulo: "Capitan Frio - Captain Cold", precio: "$20000", categoria: "DC comics", imagen: "/assets/img/DCcomics/IMG-20250706-WA0029.jpg", stock: 1},
+    {id: 229, titulo: "HellBlazer", precio: "$20000", categoria: "DC comics", imagen: "/assets/img/DCcomics/IMG-20250706-WA0030.jpg", stock: 1},
+    {id: 230, titulo: "Shazam!", precio: "$20000", categoria: "DC comics", imagen: "/assets/img/DCcomics/IMG-20250706-WA0031.jpg", stock: 1},
+    {id: 231, titulo: "Martian Manhunter", precio: "$20000", categoria: "DC comics", imagen: "/assets/img/DCcomics/IMG-20250706-WA0032.jpg", stock: 1},
 ];  
 
 // Contenedor de productos
@@ -923,4 +942,25 @@ document.addEventListener("click", function(e) {
             }, 1700);
         };
     }
+});
+
+// Evento para buscar productos por título o categoría
+document.getElementById("busqueda-productos").addEventListener("input", (e) => {
+    const texto = e.target.value.toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim();
+
+    const productosFiltrados = productos.filter((producto) => {
+        const tituloNormalizado = producto.titulo.toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+        const categoriaNormalizada = producto.categoria.toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+
+        return tituloNormalizado.includes(texto) || categoriaNormalizada.includes(texto);
+    });
+
+    renderizarProductos(productosFiltrados);
 });
